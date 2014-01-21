@@ -1,0 +1,42 @@
+		<link rel="stylesheet" type="text/css"
+			href="resources/css/reset.css" />
+		<link rel="stylesheet" type="text/css"
+			href="resources/js/dojo/dojo/resources/dojo.css" />
+
+		<link rel="stylesheet" type="text/css"
+			href="resources/js/dojo/dijit/themes/nihilo/nihilo.css" />
+			
+			
+		<link rel="stylesheet" type="text/css" 
+			href="resources/js/dojo/dojox/widget/Toaster/Toaster.css">
+			
+		<link rel="stylesheet" type="text/css" 
+			href="resources/js/dojo/dojox/layout/resources/ScrollPane.css">	
+		<link rel="stylesheet" type="text/css"
+			href="resources/css/base.css" />	
+			
+		<link rel="stylesheet" type="text/css"
+			href="resources/css/page.css" />	
+			
+		<link rel="stylesheet" type="text/css"
+			href="resources/css/dialog.css" />
+		<link rel="stylesheet" type="text/css"
+			href="resources/css/table.css" />
+			
+
+		
+			
+		<script type="text/javascript" src="resources/js/dojo/dojo/dojo.js"
+			data-dojo-config="parseOnLoad: true, isDebug: false"></script>
+		<script type="text/javascript" src="resources/js/base.js"></script>	
+		<script type="text/javascript" src="resources/js/page.js"></script>
+		<script type="text/javascript" src="resources/js/tab.js"></script>
+		<script type="text/javascript" src="resources/js/service.js"></script>
+		<script src="resources/js/dateUtil.js"></script>
+		<script type="text/javascript">
+		dojo.addOnLoad(function(){
+			dojo.require("dijit.Dialog");	
+			
+		});
+		</script>
+ 

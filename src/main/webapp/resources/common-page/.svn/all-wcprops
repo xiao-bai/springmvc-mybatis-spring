@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/yibei/!svn/ver/12/trunk/crm/src/main/webapp/resources/common-page
+END
+500.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/yibei/!svn/ver/12/trunk/crm/src/main/webapp/resources/common-page/500.jsp
+END
+common-area-json.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/yibei/!svn/ver/12/trunk/crm/src/main/webapp/resources/common-page/common-area-json.jsp
+END
+taglibs.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/yibei/!svn/ver/12/trunk/crm/src/main/webapp/resources/common-page/taglibs.jsp
+END
+403.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/yibei/!svn/ver/12/trunk/crm/src/main/webapp/resources/common-page/403.jsp
+END
+404.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/yibei/!svn/ver/12/trunk/crm/src/main/webapp/resources/common-page/404.jsp
+END
+session-timeout.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/yibei/!svn/ver/12/trunk/crm/src/main/webapp/resources/common-page/session-timeout.jsp
+END
+error-403.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/yibei/!svn/ver/12/trunk/crm/src/main/webapp/resources/common-page/error-403.jsp
+END
+include-page.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/yibei/!svn/ver/12/trunk/crm/src/main/webapp/resources/common-page/include-page.jsp
+END
+error500.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/yibei/!svn/ver/12/trunk/crm/src/main/webapp/resources/common-page/error500.jsp
+END
+test.jsp
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/yibei/!svn/ver/12/trunk/crm/src/main/webapp/resources/common-page/test.jsp
+END

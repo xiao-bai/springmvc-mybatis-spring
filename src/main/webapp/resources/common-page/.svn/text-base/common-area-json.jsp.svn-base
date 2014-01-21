@@ -1,0 +1,19 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="/resources/common-page/taglibs.jsp"%>
+{ identifier:"id", 
+  label: "name", 
+  items: [
+  		
+  			<s:iterator value="areaList" status="s">			
+			  { name:'<s:property value="areaname" escape="false"/>',
+				id:'<s:property value="areaid" escape="false"/>',
+				areaClass:'<s:property value="areaclass" escape="false"/>',
+				superareaid:'<s:property value="superareaid" escape="false"/>',
+				postcode:'<s:property value="postalcode" escape="false"/>'
+			  }<s:if test="!#s.last">,</s:if>
+			
+  			</s:iterator>
+  			
+  		
+	]
+ }

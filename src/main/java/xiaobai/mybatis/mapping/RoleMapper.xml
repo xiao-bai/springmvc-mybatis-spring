@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="xiaobai.mybatis.dao.RoleMapper">
+	<resultMap id="BaseResultMap" type="xiaobai.mybatis.model.Role">
+		<id column="roleid" property="roleid" jdbcType="VARCHAR" />
+		<result column="userid" property="userid" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Example_Where_Clause">
+		<where>
+			<foreach collection="oredCriteria" item="criteria" separator="or">
+				<if test="criteria.valid">
+					<trim prefix="(" suffix=")" prefixOverrides="and">
+						<foreach collection="criteria.criteria" item="criterion">
+							<choose>
+								<when test="criterion.noValue">
+									and ${criterion.condition}
+								</when>
+								<when test="criterion.singleValue">
+									and ${criterion.condition} #{criterion.value}
+								</when>
+								<when test="criterion.betweenValue">
+									and ${criterion.condition} #{criterion.value}
+									and
+									#{criterion.secondValue}
+								</when>
+								<when test="criterion.listValue">
+									and ${criterion.condition}
+									<foreach collection="criterion.value" item="listItem"
+										open="(" close=")" separator=",">
+										#{listItem}
+									</foreach>
+								</when>
+							</choose>
+						</foreach>
+					</trim>
+				</if>
+			</foreach>
+		</where>
+	</sql>
+	<sql id="Base_Column_List">
+		roleid, userid
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from role
+		where roleid = #{roleid,jdbcType=VARCHAR}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from role
+		where roleid = #{roleid,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="xiaobai.mybatis.model.Role">
+		insert into role (roleid,
+		userid)
+		values (#{roleid,jdbcType=VARCHAR}, #{userid,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="xiaobai.mybatis.model.Role">
+		insert into role
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="roleid != null">
+				roleid,
+			</if>
+			<if test="userid != null">
+				userid,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="roleid != null">
+				#{roleid,jdbcType=VARCHAR},
+			</if>
+			<if test="userid != null">
+				#{userid,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="xiaobai.mybatis.model.Role">
+		update role
+		<set>
+			<if test="userid != null">
+				userid = #{userid,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where roleid = #{roleid,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="xiaobai.mybatis.model.Role">
+		update role
+		set
+		userid = #{userid,jdbcType=VARCHAR}
+		where roleid =
+		#{roleid,jdbcType=VARCHAR}
+	</update>
+
+
+	<resultMap type="xiaobai.mybatis.model.Role" id="BaseResultMap2"
+		extends="BaseResultMap">
+		<association property="user" javaType="xiaobai.mybatis.model.User">
+			<id property="username" column="username" />
+			<result property="password" column="password" />
+			<result property="nickname" column="nickname" />
+			<result property="type" column="type" />
+		</association>
+	</resultMap>
+	<select id="selectById" resultMap="BaseResultMap2"
+		parameterType="java.lang.String">
+		SELECT * FROM role
+		LEFT JOIN t_user
+		ON
+		role.userid=t_user.username
+		where role.roleid = #{id,jdbcType=VARCHAR}
+	</select>
+
+	<resultMap type="xiaobai.mybatis.model.Role" id="manyToOneMap" extends="BaseResultMap">
+			<association property="user" javaType="xiaobai.mybatis.model.User">
+				<id property="username" column="username" />
+				<result property="password" column="password" />
+				<result property="nickname" column="nickname" />
+				<result property="type" column="type" />
+			</association>
+		<collection property="authoritys" javaType="list" ofType="xiaobai.mybatis.model.Authority">
+			<id property="id" column="id" />
+			<result property="text" column="text" />
+			<result property="role" column="role" />
+		</collection>
+	</resultMap>
+	<select id="getManyToOne" resultMap="manyToOneMap"
+		parameterType="java.lang.String">
+		SELECT * FROM role
+		LEFT JOIN authority
+		ON authority.role=#{id,jdbcType=VARCHAR}
+		LEFT JOIN t_user
+		on t_user.username = role.userid
+		where roleid= #{id,jdbcType=VARCHAR}
+	</select>
+
+</mapper>
