@@ -6,7 +6,6 @@ import xiaobai.mybatis.model.FileInfo;
 import xiaobai.search.util.IndexUtil;
 
 
-
 public class TestIndex {
 
 	@Test

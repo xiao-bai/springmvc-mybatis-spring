@@ -1,0 +1,12 @@
+公司：
+更新提交：
+一定要把\换为/，因为这里对应的环境是linux的
+cd D:/Users/Administrator/Workspaces/test/springmvc-mybatis-spring
+更新库中数据
+git fetch origin
+$ git merge origin/master  //把更新的内容合并到本地分支/master
+
+
+上传：
+
+宿舍：
