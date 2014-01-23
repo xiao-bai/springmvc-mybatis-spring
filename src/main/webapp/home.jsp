@@ -33,7 +33,7 @@
 		<div class="WB_global_nav">
 			<form>
   				<input type="text" class="span2" style="height:30px;width:300px;margin-top:5px;">
-  				<input type="button" class="mybtn" value="搜索一下" style="font-size:16px;width:95px;height:32px;marigin-left:30px;margin-top:5px;background-color:#ddd;cursor:pointer;" >
+  				<input type="button" class="mybtn" onclick="hotwordresult();" value="搜索一下" style="font-size:16px;width:95px;height:32px;marigin-left:30px;margin-top:5px;background-color:#ddd;cursor:pointer;" >
 			</form>
 			
 		</div>
@@ -65,21 +65,22 @@
 				<tr class="ml">
 					<td><span> 你 </span> <b> 为我着迷电视剧 </b></td>
 				</tr>
-				<tr class="ml">
-					<td><span> 你 </span> <b> 把我灌醉原唱 </b></td>
-				</tr>
-				<tr class="ml">
-					<td><span> 你 </span> <b> 好英雄 </b></td>
-				</tr>
-				<tr class="ml">
-					<td><span> 你 </span> <b> 丫闭嘴 </b></td>
-				</tr>
+				
+				
 			</tbody>
 		</table>
 	</div>
 
 
 	<script>
+	function hotwordresult(){
+		var $tbody = $("<tbody></tabody>");
+		var $tr = $("<tr><td><span>"+"我"+"</span> <b>"+"叫小白" +"</tr>");
+		$tbody.append($tr);
+		alert($tbody.toString());
+	}
+	
+	
 	$(document).scroll(function() {
 		$(".s-ps-sug").hide();	 
 	});
