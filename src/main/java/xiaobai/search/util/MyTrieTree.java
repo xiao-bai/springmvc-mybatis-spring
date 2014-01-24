@@ -29,11 +29,9 @@ public class MyTrieTree {
 		char[] letters = str.toCharArray();
 		for (int i = 0, len = str.length(); i < len; i++) {
 			int pos = letters[i];
-			System.out.println("------------------"+pos);
-			
 			if (node.son[pos] == null) {
 				node.son[pos] = new TrieNode();
-				node.son[pos].val = letters[i];
+				node.son[pos].val =String.valueOf(str.charAt(i));
 				node.son[pos].parent = node;         //设置子节点对应的父节点
 
 			}
@@ -65,7 +63,6 @@ public class MyTrieTree {
 	// 前序遍历字典树
 	public void preTraverses(TrieNode node) {
 		if (node != null) {
-			System.out.println(node.val);
 			for (TrieNode child : node.son) {
 				preTraverses(child);
 			}
@@ -97,14 +94,16 @@ public class MyTrieTree {
 	}
 	
 	public void findSon(TrieNode node){
-		if(node.num>0){
-			hotWord.add(node);
-		}
-		for(int i = 0 ; i < node.son.length ; i ++){
-			if(node.son[i] != null){
-				findSon(node.son[i]);
+		if(node!=null){
+			if(node.num>0){
+				hotWord.add(node);
 			}
-				
+			for(int i = 0 ; i < node.son.length ; i ++){
+				if(node.son[i] != null){
+					findSon(node.son[i]);
+				}
+					
+			}
 		}
 	}
 	

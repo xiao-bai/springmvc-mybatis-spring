@@ -5,7 +5,7 @@
           { "prefix":"${prefix}","word":"${dip}" },
     </c:if>
 	<c:if test="${status.last}">
-          { "word":"${dip}" }
+          { "prefix":"${prefix}","word":"${dip}" }
     </c:if>
 </c:forEach>
 ] }

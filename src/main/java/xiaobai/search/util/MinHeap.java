@@ -34,11 +34,11 @@ public class MinHeap
         int smallest = i;
         
         // 存在左结点，且左结点的值小于根结点的值
-        if (l < data.length && data[l].num < data[i].num)  
+        if (l < data.length && data[l]!= null && data[l].num < data[i].num)  
         	smallest = l;  
         
         // 存在右结点，且右结点的值小于以上比较的较小值
-        if (r < data.length && data[r].num < data[smallest].num)  
+        if (r < data.length &&data[r]!=null&& data[r].num < data[smallest].num)  
         	smallest = r;  
         
         // 左右结点的值都大于根节点，直接return，不做任何操作
