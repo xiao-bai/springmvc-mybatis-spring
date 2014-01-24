@@ -41,7 +41,7 @@
 			<span>以下为内容</span>
 		</div>
 
-	<div class="s-ps-sug" style="display:none;">
+	<div class="s-ps-sug" >
 		<table id="st" cellspacing="0" cellpadding="2">
 			<tbody>
 				<tr class="ml">
@@ -74,10 +74,7 @@
 
 	<script>
 	function hotwordresult(){
-		var $tbody = $("<tbody></tabody>");
-		var $tr = $("<tr><td><span>"+"我"+"</span> <b>"+"叫小白" +"</tr>");
-		$tbody.append($tr);
-		alert($tbody.toString());
+		alert("开始搜索");
 	}
 	
 	
@@ -115,6 +112,17 @@
 				dataType : "json",
 				//data: data,
 				success : function(msg) {
+					var tbody = $("<tbody></tabody>");
+					var tr ;
+					var td ;
+					for(var i = 0 ; i < msg.obj.length ; i ++ ){
+						tr = $("<tr class='ml'></tr>");
+						td = $("<td><span>"+msg.obj[0].prefix+"</span> <b>"+msg.obj[i].word +"</b></td>");
+						tr.append(td);
+						tbody.append(tr);
+					}
+					$("#st").html("");
+					$("#st").append(tbody);
 					$(".s-ps-sug").show();
 					},
 				error : function(msg) {
