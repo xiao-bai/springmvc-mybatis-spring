@@ -2,10 +2,10 @@
 { "obj": [
 <c:forEach var="dip" items="${words}" varStatus="status">
 	<c:if test="${!status.last}">
-          { "prefix":"${prefix}","word":"${dip}" },
+          { "prefix":"${prefix}","word":"${dip.val}","num":"${dip.num}" },
     </c:if>
 	<c:if test="${status.last}">
-          { "prefix":"${prefix}","word":"${dip}" }
+          { "prefix":"${prefix}","word":"${dip.val}","num":"${dip.num}" }
     </c:if>
 </c:forEach>
 ] }

@@ -10,7 +10,13 @@
 <html>
 <head>
 <base href="<%=basePath%>">
+<style>
+.times{
+float: right;
+margin-right:10px;
+}
 
+</style>
 <title>搜索引擎主页</title>
 
 <meta http-equiv="pragma" content="no-cache">
@@ -37,11 +43,31 @@
 		</form>
 	</div>
 	<div class="my_content">
-		<span>以下为内容</span>
+		<div style="margin-left:30px;font-size:20px;">
+			<ul class="nav nav-list" >
+			  <li>
+			    	热门搜索
+			  </li>
+			  <li>
+			    <a href="#">小时榜</a>
+			  </li>
+			  <li>
+			    <a href="#">二十四小时榜</a>
+			  </li>
+			  <li>
+			    <a href="#">周榜</a>
+			  </li>
+			  <li>
+			    <a href="#">月榜</a>
+			  </li>
+			</ul>
+		</div>
+		
 	</div>
 
-	<div class="s-ps-sug" style="display:none;">
-		<table id="st" cellspacing="0" cellpadding="2">
+	<div class="s-ps-sug" style="display:none">
+		<table id="st" cellspacing="0" cellpadding="2" >
+			<tr class="ml" onclick="addTrClick(this);"><td><span>1</span> <b>23456789</b><span class="times">30次</span></td> </tr>
 		</table>
 	</div>
 
@@ -108,7 +134,7 @@
 									tr = $("<tr class='ml' onclick='addTrClick(this);'></tr>");
 									td = $("<td><span>" + msg.obj[0].prefix
 											+ "</span> <b>" + msg.obj[i].word
-											+ "</b></td>");
+											+ "</b><span class='times'>"+msg.obj[i].num+"次</span></td>");
 									tr.append(td);
 									tbody.append(tr);
 								}

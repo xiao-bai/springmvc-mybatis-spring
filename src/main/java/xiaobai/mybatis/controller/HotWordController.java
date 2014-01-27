@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import xiaobai.search.util.FileUtil;
 import xiaobai.search.util.MinHeap;
 import xiaobai.search.util.MyTrieTree;
+import xiaobai.search.util.SearchResult;
+import xiaobai.search.util.TopSearcherTree;
 import xiaobai.search.util.TrieNode;
 
 @Controller
@@ -22,7 +25,7 @@ public class HotWordController {
 	public String find(@PathVariable String word, HttpServletRequest request) {
 		System.out.println("..............................."+word);
 		List<TrieNode> hotWord = new ArrayList<TrieNode>();
-		List<String> list = new ArrayList<String>();
+		List<SearchResult> list = new ArrayList<SearchResult>();
 		MyTrieTree tree = MyTrieTree.getInstance();
 		TrieNode node = tree.prefix(word);
 		
@@ -45,10 +48,14 @@ public class HotWordController {
 				}
 			}
 			String result = "";
+			SearchResult r = null ;
 			for (int i = 0; i < 10 && top[i] !=null; i++) {
 				result = tree.printf(top[i]);
 				if(!result.equals("")){
-					list.add(result.substring(word.length()));
+					r = new SearchResult();
+					r.setVal(result.substring(word.length()));
+					r.setNum(top[i].num);
+					list.add(r);
 				}
 			}
 			request.setAttribute("words", list);
@@ -64,11 +71,28 @@ public class HotWordController {
 	@RequestMapping(value = "/search/{word}", method = RequestMethod.POST)
 	public String search(@PathVariable String word, HttpServletRequest request) {
 		MyTrieTree tree = MyTrieTree.getInstance();
+		FileUtil fileUtil = FileUtil.getInstance();
+		
+		if(!fileUtil.createTxt()){
+			System.out.println("将记录保存入数据库");
+		}
 		if(word!= null && word !=""){
 			tree.insert(word);
 		}
+		fileUtil.writeByRandomAccess(word);
 		request.setAttribute("result", "1");
 		return "page/json/result-json";
+	}
+	
+	
+	@RequestMapping(value="/topsearch/{type}/",method = RequestMethod.GET)
+	public String topSearch(@PathVariable String type, HttpServletRequest request){
+		TopSearcherTree topsearcher = new TopSearcherTree();
+		if(type.equals("hour")){
+			
+		}
+		request.setAttribute("result", "1");
+		return "page/json/result-json"; 
 	}
 
 	// 从data数组中获取最大的k个数
@@ -98,6 +122,7 @@ public class HotWordController {
 			
 			return topk;
 	}
+		
 
 
 }
